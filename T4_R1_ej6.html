@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Pagina para adivinar colores</h1>
+    <table border="1px" id="tabla">
+        <tr>
+            <th>Colores</th>
+        </tr>
+        <tr>
+            <td>#FF0000</td>
+        </tr>
+        <tr>
+            <td>#00FF00</td>
+        </tr>
+        <tr>
+            <td>#0000FF</td>
+        </tr>
+        <tr>
+            <td>#FFFF00</td>
+        </tr>
+        <tr>
+            <td>#00FFFF</td>
+        </tr>
+        <tr>
+            <td>#FF00FF</td>
+        </tr>
+        <tr>
+            <td>#000000</td>
+        </tr>
+        <tr>
+            <td>#FFFFFF</td>
+        </tr>
+        <tr>
+            <td>#808080</td>
+        </tr>
+        <tr>
+            <td>#C0C0C0</td>
+        </tr>
+        <tr>
+            <td>#FFD700</td>
+        </tr>
+        <tr>
+            <td>#FFC0CB</td>
+        </tr>
+    </table>
+    <script>
+        const tabla = document.getElementById('tabla');
+        const colores ={
+            '#FF0000': 'Rojo',
+            '#00FF00': 'Verde',
+            '#0000FF': 'Azul',
+            '#FFFF00': 'Amarillo',
+            '#00FFFF': 'Aqua',
+            '#FF00FF': 'Magenta',
+            '#000000': 'Negro',
+            '#FFFFFF': 'Blanco',
+            '#808080': 'Gris',
+            '#C0C0C0': 'Gris claro',
+            '#FFD700': 'Oro',
+            '#FFC0CB': 'Rosa'
+        };
+
+
+
+        darEvento();
+        function darEvento(){
+            let celdas = tabla.querySelectorAll('td');
+            celdas.forEach(celda => celda.addEventListener('mouseover',function (){
+                if (celda.textContent[0] =='#'){
+                    let color = celda.textContent;
+                    celda.style.backgroundColor = color;
+                }
+                
+            }));
+
+            celdas.forEach(celda => celda.addEventListener('mouseout',function(){
+            
+                if (celda.textContent[0] =='#'){
+                    let text = celda.textContent;
+                    if (colores[text]== 'Negro'){
+                        celda.style.color = 'white';
+                        celda.textContent = colores[text];
+                    }else{
+                        celda.textContent = colores[text];
+                    }
+                }
+                
+                
+            }));
+        }
+    </script>
+</body>
+</html>

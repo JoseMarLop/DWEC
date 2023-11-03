@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <input type="text" name="nombre" id="nombre" autocomplete="off"><label id="labelnombre"></label><br><br>
+        <input type="email" name="email" id="email" autocomplete="off"><label id="labelemail"></label><br><br>
+        <input type="text" name="comentario" id="comentario" autocomplete="off"><label id="labelcomentario"></label><br><br>
+        <input type="submit" value="Enviar">
+        <input type="reset" value="Cancelar">
+    </form>
+    <script>
+        const nombre = document.getElementById('nombre');
+        const email = document.getElementById('email');
+        const comentario = document.getElementById('comentario');
+
+        const labelnombre = document.getElementById('labelnombre');
+        const labelemail = document.getElementById('labelemail');
+        const labelcomentario = document.getElementById('labelcomentario');
+
+        nombre.addEventListener('focus',function(){
+            labelnombre.textContent = 'Casilla para introducir nombre completo.';
+        })
+        nombre.addEventListener('blur',function(){
+            labelnombre.textContent = '';
+        })
+
+        email.addEventListener('focus',function(){
+            labelemail.textContent = 'Casilla para introducir el email.';
+        })
+        email.addEventListener('blur',function(){
+            labelemail.textContent = '';
+        })
+
+        comentario.addEventListener('focus',function(){
+            labelcomentario.textContent = 'Casilla para introducir un comentario.';
+        })
+        comentario.addEventListener('blur',function(){
+            labelcomentario.textContent = '';
+        })
+
+        
+    </script>
+</body>
+</html>

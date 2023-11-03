@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table id="tabla" border="1px"></table>
+    <script>
+        const canvas = document.getElementById('tabla');
+        var tecla;
+        //Evento que carga el canvas
+        window.addEventListener('load',cargarCanvas);
+        
+        //Evento que controla si se pulsa shift o ctrl
+        window.addEventListener('keydown',function(event){
+            
+            if (event.shiftKey){
+                tecla = 1;
+            }else if(event.ctrlKey){
+                tecla = 2;
+            }
+        });
+
+        //Evento que controla cuando se deja de pulsar
+        window.addEventListener('keyup',function(){
+            tecla = false;
+        });
+
+        //Cargar canvas
+        function cargarCanvas(){
+                for (let i = 0; i < 100;i++){
+                    let fila = document.createElement('tr');
+                    
+                        for (let j = 0;j < 99;j++){
+                            let celda = document.createElement('td')
+                            celda.innerHTML = '&nbsp';
+                            //Evento que detecta sobre que celda esta el raton
+                            celda.addEventListener('mouseover', function() {
+                                if (tecla == 1) {
+                                    celda.style.backgroundColor = 'blue';
+                                } else if (tecla == 2) {
+                                    celda.style.backgroundColor = 'red';
+                                }
+                            });
+                            fila.appendChild(celda);
+                        }
+                    canvas.appendChild(fila);    
+                      
+                }
+        }
+    </script>
+</body>
+</html>

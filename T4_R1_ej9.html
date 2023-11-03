@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <img id="foto" src="foto.avif" alt="no carga" width="100px" height="100px" style="position: absolute;">
+    <script>
+        
+        const foto = document.getElementById('foto');
+        var controlador = false;
+
+        function moverImagen(event){
+            if (controlador) {
+                let x = event.clientX;
+                let y = event.clientY;
+                foto.style.top = y + 'px';
+                foto.style.left = x + 'px';
+            }
+        }
+
+        foto.addEventListener('mousedown',function(){
+            controlador = true;
+            document.addEventListener('mousemove', moverImagen);
+        })
+        
+
+        foto.addEventListener('mouseup', function(){
+            controlador = false;
+            document.removeEventListener('mousemove',moverImagen);
+        })
+
+    </script>
+</body>
+</html>
